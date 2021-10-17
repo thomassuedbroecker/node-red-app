@@ -19,7 +19,8 @@ var fs = require("fs");
 
 const IBMCloudEnv = require('ibm-cloud-env');
 IBMCloudEnv.init('/server/config/mappings.json');
-const cloudantUrl = IBMCloudEnv.getString('cloudant_url');
+//const cloudantUrl = IBMCloudEnv.getString('cloudant_url');
+const cloudantUrl=process.env.CLOUDANT_URL;
 
 const REGEX_LEADING_ALPHA = /^[^a-zA-Z]*/;
 const REGEX_ALPHA_NUM = /[^a-zA-Z0-9]/g;
@@ -88,7 +89,8 @@ var settings = module.exports = {
     }
 };
 
-if (!cloudantUrl) {
+
+if(!cloudantUrl){
     console.log("Failed to find the Cloudant URL");
     console.log("Falling back to local filesystem storage. Changes will *not* be saved across application restarts.");
 } else {

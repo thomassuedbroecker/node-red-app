@@ -16,9 +16,10 @@ FROM registry.access.redhat.com/ubi8/nodejs-14-minimal:1
 COPY --from=build /opt/app-root/src /opt/app-root/src/
 
 WORKDIR /opt/app-root/src
+COPY ./docker-entrypoint.sh ./docker-entrypoint.sh
 
 ENV NODE_ENV=production
 ENV PORT 3000
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["/bin/sh","docker-entrypoint.sh"]

@@ -43,14 +43,14 @@ if (!settings.adminAuth) {
                 }
             };
 
-            if (runtimeSettings.bluemixConfig && runtimeSettings.bluemixConfig.hasOwnProperty('adminAuth')) {
+            /*if (runtimeSettings.bluemixConfig && runtimeSettings.bluemixConfig.hasOwnProperty('adminAuth')) {
                 delete runtimeSettings.bluemixConfig.adminAuth;
                 storage.saveSettings(runtimeSettings).then(() => {
                     startNodeRED(config);
                 });
-            } else {
+            } else {*/
                 startNodeRED(config);
-            }
+            /*}*/
         } else if (runtimeSettings.bluemixConfig) {
             util.log("Using runtime settings for adminAuth");
             startNodeRED(runtimeSettings.bluemixConfig);
